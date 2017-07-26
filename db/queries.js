@@ -16,15 +16,17 @@ const questions = {
   create: ({text, userID, topicID}) => {
     return db.none(`
       INSERT INTO questions (text, posted_by_id, topic_id)
-      VALUES ($(text), $(userID), $(topicID))");
+      VALUES ($[text], $[userID], $[topicID]);
     `, {text, userID, topicID})
   },
 
   update: (id, {text, topicID}) => {
     return db.none(`
-      UPDATE questions (text, topic_id)
-      VALUES ($(text), $(topicID))")
-      WHERE questions.id = $(id);
+      UPDATE questions
+      SET
+        text = $[text],
+        topic_id = $[topicID]
+      WHERE questions.id = $[id];
     `, {id, text, topicID})
   },
 
