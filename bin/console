@@ -1,0 +1,6 @@
+#!/usr/bin/env node
+
+const repl = require('repl')
+const db = require('../db/queries.js')
+
+repl.start('> ').context.db = db
