@@ -4,7 +4,7 @@ const { questions } = require('../db/queries.js')
 const { handleError } = require('../utils.js')
 
 // Questions API routes
-// These will be mounted within /questions route
+// These will be mounted to /questions path
 
 // Get all questions => GET /questions
 router.get('/', (req, res) => {
@@ -57,6 +57,5 @@ router.delete('/:id', (req, res) => {
     .then(() => res.json({message: 'Question deleted'}))
     .catch(handleError(res))
 })
-
 
 module.exports = router
